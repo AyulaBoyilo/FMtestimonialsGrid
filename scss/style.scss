@@ -1,0 +1,164 @@
+@import "base";
+@import "colors";
+
+.container {
+  background-color: $light-bg;
+  padding: 75px 25px;
+  display: grid;
+  grid-column: auto;
+  gap: 25px;
+
+  .card {
+    background-color: $default;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px darken($color: $light-bg, $amount: 10);
+
+    .person {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      .identity {
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: 17px;
+
+        .name {
+          font-size: 14px;
+          line-height: 1;
+        }
+
+        .title {
+          font-size: 12px;
+          line-height: 1;
+        }
+      }
+    }
+
+    h3 {
+      font-size: 21px;
+      padding-top: 20px;
+    }
+
+    p {
+      padding-top: 20px;
+      line-height: 1.5;
+    }
+  }
+
+  .primary {
+    background: url(../images/bg-pattern-quotation.svg) no-repeat top 0px right
+      20px / 33%;
+    background-color: $primary;
+
+    .person img {
+      width: 32px;
+      height: 32px;
+      border: 2px solid fade-out($color: $default, $amount: 0.7);
+    }
+  }
+  .secondary {
+    background-color: $secondary;
+  }
+  .tertiary {
+    background-color: $tertiary;
+
+    .person img {
+      width: 32px;
+      height: 32px;
+      border: 2px solid lighten($color: $primary, $amount: 10);
+    }
+  }
+  .primary,
+  .secondary,
+  .tertiary {
+    color: $default;
+    .title {
+      color: fade-out($color: $default, $amount: 0.5);
+    }
+    p {
+      color: fade-out($color: $default, $amount: 0.3);
+    }
+  }
+}
+
+footer {
+  font-size: 11px;
+  padding: 20px;
+  text-align: center;
+  background-color: lighten($color: $light-bg, $amount: 10);
+
+  a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
+// Tablets
+@media screen and (min-width: 650px) and (max-width: 1366px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr auto auto auto;
+    padding: 10vh calc((100vw - 600px) / 2);
+
+    .primary {
+      grid-area: 1 / 1 / 2 / 3;
+      background: url(../images/bg-pattern-quotation.svg) no-repeat top 0px
+        right 100px / 18%;
+      background-color: $primary;
+    }
+
+    .secondary {
+      grid-area: 2 / 1 / 2 / 2;
+    }
+
+    .tertiary {
+      grid-area: 4 / 1 / 5 / 3;
+    }
+
+    .card:last-child {
+      grid-area: 2 / 2 / 4 / 3;
+    }
+  }
+}
+
+// Desktop
+@media screen and (min-width: 1367px) {
+  .container {
+    padding: 13.98vh calc((100vw - 1150px) / 2);
+    grid-template-columns: 0.8fr 1fr 0.8fr 0.75fr;
+    grid-template-rows: 1fr auto;
+
+    .card {
+      h3 {
+        font-size: 22px;
+      }
+    }
+
+    .primary {
+      grid-area: 1 / 1/ 2 / 3;
+      background: url(../images/bg-pattern-quotation.svg) no-repeat top 0px
+        right 100px / 18%;
+      background-color: $primary;
+    }
+
+    .tertiary {
+      grid-area: 2 / 2/ 3 / 4;
+    }
+
+    .card:last-child {
+      grid-area: 1 / 4 / 3 / 5;
+    }
+  }
+
+  footer {
+    padding: 27px 0 0 0;
+  }
+}
